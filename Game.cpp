@@ -2,9 +2,14 @@
 
 ///private functions
 void Game::initWindow() {
-    this->window = new RenderWindow(VideoMode(1000, 800), "Lords of Space", Style::Default);
+    this->window = new RenderWindow(VideoMode(1000, 800), "Space Shooter", Style::Default);
     this->window->setFramerateLimit(60);
     this->window->setVerticalSyncEnabled(false);
+    Image icon;
+    if (!icon.loadFromFile("Textures/icon.png")) {
+        cout << "ERROR::GAME::INITWINDOW::Could not load from file!!!";
+    }
+    this->window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
 void Game::initTextures() {
